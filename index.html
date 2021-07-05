@@ -1,28 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>weather-dashboard</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
-    />
-    <!-- jQuery UI <link> tag -->
-    <link
-      rel="stylesheet"
-      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
-    />
-    <link rel="stylesheet" href="/assets/style/style.css" />
+
+    <!-- Bootrap link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <!-- jQuery UI link -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
+
 <body>
-    
+    <!-- Search text input area -->
+    <div
+        class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh bg-primary">
+        <div class="col-12 col-md-3 bg-light p-3">
+            <h1 class="text-primary">Weather Dashboard</h1>
+            <form type="text" id="search-form" class="mb-2">
+                <input id="city-name" class="form-input w-100" type="text" placeholder="Enter a city name">
+
+                <!-- Search Button -->
+                <!-- <button type="button" class="btn btn-info btn-block" id = "button">Search</button> -->
+                <button type="button" class="btn btn-info btn-block" onclick="getCity()">Click me</button>
+                <div id="list">
+                    <ul id="past-cities">
+
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
 </body>
-<!-- jQuery <script> tag -->
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<!-- jQuery UI <script> tag -->
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<!-- js <script> tag -->
-<script src="/assets/js/script.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="./assets/js/script.js"></script>
+
 </html>
