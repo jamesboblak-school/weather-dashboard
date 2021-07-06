@@ -103,9 +103,18 @@ function getCity() {
                     var td24 = "<td id='temp-forecast-report6'>" + tempF6  + tem + "</td>";
                     var td25 = "<td id='perc-forecast-icon5]6'>" + response2["daily"]["5"]["humidity"] + perc + "</td></tr>"; 
 
-                    if (response2["daily"][0]["uvi"] > 4) {
-                        $("#uvi-report").addClass(".moderateUV");
+                    if (Math.floor(response2["daily"][0]["uvi"]) >= 8) {
+                        $("#card1").addClass("severeUV");
+                        alert("UVI is high in that location today: " + response2["daily"][0]["uvi"]);
                         console.log("UVI: " + response2["daily"][0]["uvi"]);
+                    }   else if ((Math.floor(response2["daily"][0]["uvi"])) >= 4) {
+                        $("#card1").addClass("moderateUV");
+                        alert("UVI is moderate in that location today: " + response2["daily"][0]["uvi"])
+                    }   else {
+                        alert("UVI is healthy in that location today: " + response2["daily"][0]["uvi"])
+
+                    };
+
                     }
                     
                     $("#card1").append(td10 + td9);
@@ -125,12 +134,12 @@ function getCity() {
 
 
 
-                }           
+                })          
         });
 
     // var message = document.createElement("P"); // Create a <p> element
     // message.innerHTML = "Today in " + cityName; // Insert text
     // document.getElementById("card1").appendChild(message); // Append <p> to <div> with id="card1"
 
-});
-}
+};
+
