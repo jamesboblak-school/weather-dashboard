@@ -30,21 +30,26 @@ function getCity() {
                 var td4 = "<td id=weather-icon>" + "</td></tr>";
 
                 $("#card1").append(tr + td1 + td2 + td3 + td4);
-                $('<img src="./assets/images/cloudy.png" width="100%">').appendTo(".card-body");
-                
-                $("temp-report").append(" degrees");
-
+                $('<center><img src="./assets/images/cloudy.png" width="80%"></center>').appendTo(".card-body1");
             }
+            var lat = Math.floor(response["coord"]["lat"]);
+            console.log("lat: " + lat);
+            var lon = Math.floor(response["coord"]["lon"]);
+            console.log("lon: " + lon);
+
+            var info2 = fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&exclude=current,minutely,hourly,alerts&appid=6391e3bcdc67c1a8254b41d12e058c92', {
+                method: 'GET',
+            })
+            .then(function (response) {
+                console.log("response2", response);
+                return response.json();
+            })
+
+            
         });
+
     var message = document.createElement("P"); // Create a <p> element
-    message.innerHTML = "Today's weather in " + cityName; // Insert text
+    message.innerHTML = "Current weather in " + cityName; // Insert text
     document.getElementById("card1").appendChild(message); // Append <p> to <div> with id="card1"
-
-    // src = "./assets/images/cloudy.png"
-    // var imgPrint = < img class = "card-img-top"
-    // alt = "Card image cap" >
-    //     document.getElementById("card1").appendChild(imgPrint);
-
-
 
 }
