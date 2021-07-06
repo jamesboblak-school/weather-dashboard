@@ -1,5 +1,12 @@
 // Store user text input to local storage and print to history-list
-
+var updateTime = function () {
+    var currentTime = moment().format("MMM Do, YYYY", "mm:dd:yyyy");
+    $("#date-0").text(currentTime);
+    var oneTime = moment().add(86400000).format("MMM Do, YYYY", "mm:dd:yyyy");
+    $("#date-1").text(oneTime);
+}
+updateTime();
+setInterval(updateTime, 1000);
 function getCity() {
     var cityName =
         document.getElementById("city-name").value;
@@ -23,13 +30,14 @@ function getCity() {
                 var perc = "% Humidity";
                 var tempF = Math.floor((((response["main"]["temp"] - 273) * 1.8) + 32));
                 var tem = "° Fahrenheit";
-                var imgTemp = src = "./assets/images/cloudy.png"
-                var td1 = "<td id=temp-report>" + tempF + tem + "</td>";
-                var td2 = "<td id=weather-report>" + response["weather"][0]["description"] + "</td>";
-                var td3 = "<td id=humidity-report>" + response["main"]["humidity"] + perc + "</td>";
-                var td4 = "<td id=weather-icon>" + "</td></tr>";
+                var imgTemp = src = "./assets/images/cloudy.png";
+                var td0 = "<td id='city-name'>" + response["name"] + "</td>";
+                var td1 = "<td id='temp-report'>" + tempF + tem + "</td>";
+                var td2 = "<td id='weather-report'>" + response["weather"][0]["description"] + "</td>";
+                var td3 = "<td id='humidity-report'>" + response["main"]["humidity"] + perc + "</td>";
+                var td4 = "<td id='weather-icon'>" + "</td></tr>";
 
-                $("#card1").append(tr + td1 + td2 + td3 + td4);
+                $("#card1").append(tr + td0 + td1 + td2 + td3 + td4);
                 $('<center><img src="./assets/images/cloudy.png" width="80%"></center>').appendTo(".card-body1");
             }
             var lat = Math.floor(response["coord"]["lat"]);
@@ -52,22 +60,30 @@ function getCity() {
                     var tr = "<tr>";
                     var tempF = Math.floor((((response2["daily"]["1"]["temp"]["day"] - 273) * 1.8) + 32));
                     var tem = "° Fahrenheit";
-                    var td5 = "<td id=temp-forecast-report>" + tempF  + tem + "</td>";
+                    var td5 = "<td id='temp-forecast-report'>" + tempF  + tem + "</td>";
                     var perc = "% Humidity";
-                    var td6 = "<td id=perc-forecast-icon>" + response2["daily"]["1"]["humidity"] + perc + "</td></tr>";
+                    var td6 = "<td id='perc-forecast-icon'>" + response2["daily"]["1"]["humidity"] + perc + "</td></tr>";
                     var wind = "mph";
-                    var td7 = "<td id=wind-report>" + response2["daily"][1]["wind_speed"] + wind + "</td>";
-                    var td8 = "<td id=uvi-report>" + response2["daily"][1]["uvi"] + "</td>";
+                    // var td7 = "<td id='wind-report'>" + response2["daily"][1]["wind_speed"] + wind + "</td>";
+                    var uviUnits = "UV Index: ";
+                    // var td8 = "<td id='uvi-report'>" + uviUnits + response2["daily"][1]["uvi"] + "</td>";
+                    var td9 = "<td id='uvi-report'>" + uviUnits + response2["daily"][0]["uvi"] + "</td>";
+                    var td10 = "<td id='wind-report'>" + response2["daily"][0]["wind_speed"] + wind + "</td>";
+                    if (response2["daily"][0]["uvi"] > 4) {
+                        $("#uvi-report").addClass(".moderateUV");
+
+                    }
                     
-    
-                    $("#card2").append(tr + td5 + td6 + td7 + td8);
+                    $("#card1").append(td10 + td9);
+                    $("#card2").append(tr + td5 + td6);
+                    $("#card[i]").append(tr + td5 + td6);
                     $('<center><img src="./assets/images/cloudy.png" width="80%"></center>').appendTo(".card-body2");
                 }           
         });
 
-    var message = document.createElement("P"); // Create a <p> element
-    message.innerHTML = "Current weather in " + cityName; // Insert text
-    document.getElementById("card1").appendChild(message); // Append <p> to <div> with id="card1"
+    // var message = document.createElement("P"); // Create a <p> element
+    // message.innerHTML = "Today in " + cityName; // Insert text
+    // document.getElementById("card1").appendChild(message); // Append <p> to <div> with id="card1"
 
 });
 }

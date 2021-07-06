@@ -3,24 +3,44 @@ body {
     background-color: lightgrey;
 }
 
+div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 .custom-main {
     display: flex;
-    display: row;
+    flex-direction: row;
+    flex-wrap: wrap;
+
     /* align-items: flex-end; */
 }
 
 td {
     display: flex;
     margin: 10px 10px 10px 10px;
+    
 }
 
 .card {
-    background-color: darkgray;
+    background-color: white;
     margin: 10px 10px 10px 10px;
+    border-radius: 10px;
+    
 
 }
 
+.moderateUV {
+    background-color: orange;
+}
 
-/* #display-box {
+.severeUV {
+    background-color: red;
+}
 
-} */
+
+#display-box {
+display: flex;
+flex-direction: row;
+}
