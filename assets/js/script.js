@@ -20,18 +20,31 @@ function getCity() {
             $("#display-box").append(tbl);
             for (var i = 0; i < 1; i++) {
                 var tr = "<tr>";
+                var perc = "% Humidity";
                 var tempF = Math.floor((((response["main"]["temp"] - 273) * 1.8) + 32));
-                var td1 = "<td id=temp-report>" + tempF + "</td>";
+                var tem = "° Fahrenheit";
+                var imgTemp = src = "./assets/images/cloudy.png"
+                var td1 = "<td id=temp-report>" + tempF + tem + "</td>";
                 var td2 = "<td id=weather-report>" + response["weather"][0]["description"] + "</td>";
-                var td3 = "<td id=humidity-report>" + response["main"]["humidity"] + "</td></tr>";
+                var td3 = "<td id=humidity-report>" + response["main"]["humidity"] + perc + "</td>";
+                var td4 = "<td id=weather-icon>" + "</td></tr>";
 
-                $("#card1").append(tr + td1 + td2 + td3);
+                $("#card1").append(tr + td1 + td2 + td3 + td4);
+                $('<img src="./assets/images/cloudy.png" width="100%">').appendTo(".card-body");
+                
                 $("temp-report").append(" degrees");
 
             }
         });
-    var para = document.createElement("P"); // Create a <p> element
-    para.innerHTML = "Today's weather in " + cityName; // Insert text
-    document.getElementById("display-box").appendChild(para); // Append <p> to <div> with id="display-box"
-    console.log("OBJECT: " + info);
+    var message = document.createElement("P"); // Create a <p> element
+    message.innerHTML = "Today's weather in " + cityName; // Insert text
+    document.getElementById("card1").appendChild(message); // Append <p> to <div> with id="card1"
+
+    // src = "./assets/images/cloudy.png"
+    // var imgPrint = < img class = "card-img-top"
+    // alt = "Card image cap" >
+    //     document.getElementById("card1").appendChild(imgPrint);
+
+
+
 }

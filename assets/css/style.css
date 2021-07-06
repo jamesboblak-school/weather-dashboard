@@ -1,8 +1,25 @@
 body {
+    
     background-color: lightgrey;
+}
+
+.custom-main {
+    display: flex;
+    display: row;
+    /* align-items: flex-end; */
 }
 
 td {
     display: flex;
     margin: 10px 10px 10px 10px;
 }
+
+.card {
+    background-color: darkgray;
+    margin: 10px 10px 10px 10px;
+
+}
+
+/* #display-box {
+
+} */
