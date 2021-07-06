@@ -40,16 +40,34 @@ function getCity() {
             var info2 = fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&exclude=current,minutely,hourly,alerts&appid=6391e3bcdc67c1a8254b41d12e058c92', {
                 method: 'GET',
             })
-            .then(function (response) {
-                console.log("response2", response);
-                return response.json();
-            })
-
-            
+            .then(function (response2) {
+                console.log("response2", response2);
+                return response2.json();
+            }) 
+            .then(function (response2) {
+                console.log("all data2: ", response2);
+                var tbl = $("<table/>").attr("id", "card2");
+                $("#display-box").append(tbl);
+                for (var i = 0; i < 1; i++) {
+                    var tr = "<tr>";
+                    var tempF = Math.floor((((response2["daily"]["1"]["temp"]["day"] - 273) * 1.8) + 32));
+                    var tem = "° Fahrenheit";
+                    var td5 = "<td id=temp-forecast-report>" + tempF  + tem + "</td>";
+                    var perc = "% Humidity";
+                    var td6 = "<td id=perc-forecast-icon>" + response2["daily"]["1"]["humidity"] + perc + "</td></tr>";
+                    var wind = "mph";
+                    var td7 = "<td id=wind-report>" + response2["daily"][1]["wind_speed"] + wind + "</td>";
+                    var td8 = "<td id=uvi-report>" + response2["daily"][1]["uvi"] + "</td>";
+                    
+    
+                    $("#card2").append(tr + td5 + td6 + td7 + td8);
+                    $('<center><img src="./assets/images/cloudy.png" width="80%"></center>').appendTo(".card-body2");
+                }           
         });
 
     var message = document.createElement("P"); // Create a <p> element
     message.innerHTML = "Current weather in " + cityName; // Insert text
     document.getElementById("card1").appendChild(message); // Append <p> to <div> with id="card1"
 
+});
 }
