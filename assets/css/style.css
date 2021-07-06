@@ -31,6 +31,11 @@ td {
 
 }
 
+.safeUV {
+    background-color: green;
+    color: white;
+}
+
 .moderateUV {
     background-color: orange;
 }

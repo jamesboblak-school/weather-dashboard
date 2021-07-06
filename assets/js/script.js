@@ -17,6 +17,7 @@ var updateTime = function () {
 }
 updateTime();
 setInterval(updateTime, 1000);
+
 function getCity() {
     var cityName =
         document.getElementById("city-name").value;
@@ -37,6 +38,7 @@ function getCity() {
             $("#display-box").append(tbl);
             for (var i = 0; i < 1; i++) {
                 var tr = "<tr>";
+                // card 1
                 var perc = "% Humidity";
                 var tempF = Math.floor((((response["main"]["temp"] - 273) * 1.8) + 32));
                 var tem = "° Fahrenheit";
@@ -44,9 +46,19 @@ function getCity() {
                 var td0 = "<td id='city-name'>" + response["name"] + "</td>";
                 var td1 = "<td id='temp-report'>" + tempF + tem + "</td>";
                 var td2 = "<td id='weather-report'>" + response["weather"][0]["description"] + "</td>";
-                var td3 = "<td id='humidity-report'>" + response["main"]["humidity"] + perc + "</td></tr>";
+                var td34 = "<td id='weather-report'>" + response["weather"][0]["icon"] + "</td>";
+                var td3 = "<td id='humidity-report'>" + response["main"]["humidity"] + perc + "</td>";
                 $("#card1").append(tr + td0 + td1 + td2 + td3);
                 $('<img src="http://openweathermap.org/img/wn/04d@2x.png" width="300%">').appendTo(".card-body1");
+
+//***********************************************************/
+
+                var imgLinkStart = "http://openweathermap.org/img/wn/";
+                var imgLinkEnd = "@2x.png";
+                var imgLink0 = imgLinkStart + (response["weather"][0]["icon"]) + imgLinkEnd;
+                console.log("imgLink0: " + imgLink0);
+                // $('image0')
+                // var td50 = "<td id='card-0-image'>" + imgLink0 + "</td>";
             }
             var lat = Math.floor(response["coord"]["lat"]);
             console.log("lat: " + lat);
@@ -54,76 +66,81 @@ function getCity() {
             console.log("lon: " + lon);
 
             var info2 = fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&exclude=current,minutely,hourly,alerts&appid=6391e3bcdc67c1a8254b41d12e058c92', {
-                method: 'GET',
-            })
-            .then(function (response2) {
-                console.log("response2", response2);
-                return response2.json();
-            }) 
-            .then(function (response2) {
-                console.log("all data2: ", response2);
-                var tbl = $("<table/>").attr("id", "card2");
-                $("#display-box").append(tbl);
-                for (var i = 0; i < 1; i++) {
-                    var tr = "<tr>";
-                    var tempF = Math.floor((((response2["daily"]["1"]["temp"]["day"] - 273) * 1.8) + 32));
-                    var tem = "° Fahrenheit";
-                    var td5 = "<td id='temp-forecast-report'>" + tempF  + tem + "</td>";
-                    var perc = "% Humidity";
-                    var td6 = "<td id='perc-forecast-icon'>" + response2["daily"]["1"]["humidity"] + perc + "</td></tr>";
-                    var wind = "mph";
-                    var uviUnits = "UV Index: ";
-                    // card 1
-                    var td9 = "<td id='uvi-report'>" + uviUnits + response2["daily"][0]["uvi"] + "</td>";
-                    var td10 = "<td id='wind-report'>" + response2["daily"][0]["wind_speed"] + wind + "</td>";
-                    var td11 = "<td id='temp-forecast-report1'>" + tempF  + tem + "</td>";
-                    var td12 = "<td id='perc-forecast-icon1'>" + response2["daily"]["0"]["humidity"] + perc + "</td></tr>";
-                    // card 2
-                    var td19 = "<td id='weather-report2'>" + response2["daily"]["1"]["weather"][0]["description"] + "</td>";
-                    var tempF2 = Math.floor((((response2["daily"]["1"]["temp"]["day"] - 273) * 1.8) + 32));
-                    var td13 = "<td id='temp-forecast-report2'>" + tempF2  + tem + "</td>";
-                    var td14 = "<td id='perc-forecast-icon2'>" + response2["daily"]["1"]["humidity"] + perc + "</td></tr>";
-                    // card 3
-                    var td20 = "<td id='weather-report3'>" + response2["daily"]["2"]["weather"][0]["description"] + "</td>";
-                    var tempF3 = Math.floor((((response2["daily"]["2"]["temp"]["day"] - 273) * 1.8) + 32));
-                    var td15 = "<td id='temp-forecast-report3'>" + tempF3  + tem + "</td>";
-                    var td16 = "<td id='perc-forecast-icon3'>" + response2["daily"]["2"]["humidity"] + perc + "</td></tr>"; 
-                    // card 4
-                    var td21 = "<td id='weather-report4'>" + response2["daily"]["3"]["weather"][0]["description"] + "</td>";
-                    var tempF4 = Math.floor((((response2["daily"]["3"]["temp"]["day"] - 273) * 1.8) + 32));
-                    var td17 = "<td id='temp-forecast-report4'>" + tempF4  + tem + "</td>";
-                    var td18 = "<td id='perc-forecast-icon4'>" + response2["daily"]["3"]["humidity"] + perc + "</td></tr>"; 
-                    //  card 5
-                    var td22 = "<td id='weather-report5'>" + response2["daily"]["4"]["weather"][0]["description"] + "</td>";
-                    var tempF5 = Math.floor((((response2["daily"]["4"]["temp"]["day"] - 273) * 1.8) + 32));
-                    var td17 = "<td id='temp-forecast-report5'>" + tempF5  + tem + "</td>";
-                    var td18 = "<td id='perc-forecast-icon5'>" + response2["daily"]["4"]["humidity"] + perc + "</td></tr>"; 
-                    //  card 6
-                    var td23 = "<td id='weather-report6'>" + response2["daily"]["5"]["weather"][0]["description"] + "</td>";
-                    var tempF6 = Math.floor((((response2["daily"]["5"]["temp"]["day"] - 273) * 1.8) + 32));
-                    var td24 = "<td id='temp-forecast-report6'>" + tempF6  + tem + "</td>";
-                    var td25 = "<td id='perc-forecast-icon5]6'>" + response2["daily"]["5"]["humidity"] + perc + "</td></tr>"; 
+                    method: 'GET',
+                })
+                .then(function (response2) {
+                    console.log("response2", response2);
+                    return response2.json();
+                })
+                .then(function (response2) {
+                    console.log("all data2: ", response2);
+                    var tbl = $("<table/>").attr("id", "card2");
+                    $("#display-box").append(tbl);
+                    for (var i = 0; i < 1; i++) {
+                        var tr = "<tr>";
+                        var tem = "° Fahrenheit";
+                        var perc = "% Humidity";
+                        var wind = "mph ave windspeed";
+                        var uviUnits = "UV Index: ";
 
-                    if (Math.floor(response2["daily"][0]["uvi"]) >= 8) {
-                        $("#card1").addClass("severeUV");
-                        alert("UVI is high in that location today: " + response2["daily"][0]["uvi"]);
-                        console.log("UVI: " + response2["daily"][0]["uvi"]);
-                    }   else if ((Math.floor(response2["daily"][0]["uvi"])) >= 4) {
-                        $("#card1").addClass("moderateUV");
-                        alert("UVI is moderate in that location today: " + response2["daily"][0]["uvi"])
-                    }   else {
-                        alert("UVI is healthy in that location today: " + response2["daily"][0]["uvi"])
+                        // card 1 [continued]
+                        var td9 = "<td id='uvi-report'>" + uviUnits + response2["daily"][0]["uvi"] + "</td></tr>";
+                        var td10 = "<td id='wind-report'>" + response2["daily"][0]["wind_speed"] + wind + "</td>";
+                        // card 2
+                        var tempF2 = Math.floor((((response2["daily"]["1"]["temp"]["day"] - 273) * 1.8) + 32));
+                        var td11 = "<td id='temp-forecast-report1'>" + tempF2 + tem + "</td>";
+                        var td12 = "<td id='perc-forecast-report1'>" + response2["daily"]["1"]["humidity"] + perc + "</td></tr>";
+                        var td19 = "<td id='weather-forc-report1'>" + response2["daily"]["1"]["weather"][0]["description"] + "</td>";
+                        var td29 = "<td id='weather-forc-report1'>" + response2["daily"]["1"]["weather"][0]["info"] + "</td>";
 
-                    };
+                        // card 3
+                        var tempF3 = Math.floor((((response2["daily"]["2"]["temp"]["day"] - 273) * 1.8) + 32));
+                        var td13 = "<td id='temp-forecast-report2'>" + tempF3 + tem + "</td>";
+                        var td14 = "<td id='perc-forecast-report2'>" + response2["daily"]["2"]["humidity"] + perc + "</td></tr>";
+                        var td20 = "<td id='weather-forc-report2'>" + response2["daily"]["2"]["weather"][0]["description"] + "</td>";
+                        var td30 = "<td id='weather-forc-report2'>" + response2["daily"]["2"]["weather"][0]["info"] + "</td>";
 
+                        // card 4
+                        var tempF4 = Math.floor((((response2["daily"]["3"]["temp"]["day"] - 273) * 1.8) + 32));
+                        var td15 = "<td id='temp-forecast-report3'>" + tempF4 + tem + "</td>";
+                        var td16 = "<td id='perc-forecast-report3'>" + response2["daily"]["3"]["humidity"] + perc + "</td></tr>";
+                        var td21 = "<td id='weather-forc-report3'>" + response2["daily"]["3"]["weather"][0]["description"] + "</td>";
+                        var td31 = "<td id='weather-forc-report3'>" + response2["daily"]["3"]["weather"][0]["info"] + "</td>";
+
+                        //  card 5
+                        var tempF5 = Math.floor((((response2["daily"]["4"]["temp"]["day"] - 273) * 1.8) + 32));
+                        var td17 = "<td id='temp-forecast-report4'>" + tempF5 + tem + "</td>";
+                        var td18 = "<td id='perc-forecast-report4'>" + response2["daily"]["4"]["humidity"] + perc + "</td></tr>";
+                        var td22 = "<td id='weather-forc-report4'>" + response2["daily"]["4"]["weather"][0]["description"] + "</td>";
+                        var td32 = "<td id='weather-forc-report4'>" + response2["daily"]["4"]["weather"][0]["info"] + "</td>";
+
+                        //  card 6
+                        var tempF6 = Math.floor((((response2["daily"]["5"]["temp"]["day"] - 273) * 1.8) + 32));
+                        var td27 = "<td id='temp-forecast-report5'>" + tempF6 + tem + "</td>";
+                        var td28 = "<td id='perc-forecast-report5'>" + response2["daily"]["5"]["humidity"] + perc + "</td></tr>";
+                        var td23 = "<td id='weather-forc-report5'>" + response2["daily"]["5"]["weather"][0]["description"] + "</td>";
+                        var td33 = "<td id='weather-forc-report5'>" + response2["daily"]["5"]["weather"][0]["info"] + "</td>";
+
+                        // UVI color coding for card 1
+                        if (Math.floor(response2["daily"][0]["uvi"]) >= 8) {
+                            $("#card1").addClass("severeUV");
+                            alert("UVI is high in that location today: " + response2["daily"][0]["uvi"]);
+                            console.log("UVI: " + response2["daily"][0]["uvi"]);
+                        } else if ((Math.floor(response2["daily"][0]["uvi"])) >= 4) {
+                            $("#card1").addClass("moderateUV");
+                            alert("UVI is moderate in that location today: " + response2["daily"][0]["uvi"])
+                        } else {
+                            $("#card1").addClass("safeUV");
+                            alert("UVI is healthy in that location today: " + response2["daily"][0]["uvi"])
+                        };
                     }
-                    
+
                     $("#card1").append(td10 + td9);
-                    $("#card2").append(tr + td19 + td5 + td6);
-                    $("#card3").append(tr + td20 + td11 + td12);
-                    $("#card4").append(tr + td21 + td13 + td14);
-                    $("#card5").append(tr + td22 + td15 + td16);
-                    $("#card6").append(tr + td23 + td24 + td25);
+                    $("#card2").append(tr + td19 + td11 + td12);
+                    $("#card3").append(tr + td20 + td13 + td14);
+                    $("#card4").append(tr + td21 + td15 + td16);
+                    $("#card5").append(tr + td22 + td17 + td18);
+                    $("#card6").append(tr + td23 + td27 + td28);
 
 
                     var imgSource = "./assets/images/cloudy.png"
@@ -136,7 +153,7 @@ function getCity() {
 
 
 
-                })          
+                })
         });
 
     // var message = document.createElement("P"); // Create a <p> element
@@ -144,4 +161,3 @@ function getCity() {
     // document.getElementById("card1").appendChild(message); // Append <p> to <div> with id="card1"
 
 };
-
