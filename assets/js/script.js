@@ -1,4 +1,5 @@
 // Store user text input to local storage and print to history-list
+
 var updateTime = function () {
     var msecDay = 86400000
     var currentTime = moment().format("MMM Do, YYYY", "mm:dd:yyyy");
@@ -45,7 +46,7 @@ function getCity() {
                 var td2 = "<td id='weather-report'>" + response["weather"][0]["description"] + "</td>";
                 var td3 = "<td id='humidity-report'>" + response["main"]["humidity"] + perc + "</td></tr>";
                 $("#card1").append(tr + td0 + td1 + td2 + td3);
-                $('<center><img src="./assets/images/cloudy.png" width="80%"></center>').appendTo(".card-body1");
+                $('<img src="http://openweathermap.org/img/wn/04d@2x.png" width="300%">').appendTo(".card-body1");
             }
             var lat = Math.floor(response["coord"]["lat"]);
             console.log("lat: " + lat);
@@ -125,11 +126,12 @@ function getCity() {
                     $("#card6").append(tr + td23 + td24 + td25);
 
 
-                    $('<center><img src="./assets/images/cloudy.png" width="80%"></center>').appendTo(".card-body2");
-                    $('<center><img src="./assets/images/cloudy.png" width="80%"></center>').appendTo(".card-body3");
-                    $('<center><img src="./assets/images/cloudy.png" width="80%"></center>').appendTo(".card-body4");
-                    $('<center><img src="./assets/images/cloudy.png" width="80%"></center>').appendTo(".card-body5");
-                    $('<center><img src="./assets/images/cloudy.png" width="80%"></center>').appendTo(".card-body6");
+                    var imgSource = "./assets/images/cloudy.png"
+                    $('<img src="http://openweathermap.org/img/wn/01d@2x.png" width="300%">').appendTo(".card-body2");
+                    $('<img src="http://openweathermap.org/img/wn/10d@2x.png" width="300%">').appendTo(".card-body3");
+                    $('<img src="http://openweathermap.org/img/wn/11d@2x.png" width="300%">').appendTo(".card-body4");
+                    $('<img src="http://openweathermap.org/img/wn/02d@2x.png" width="300%">').appendTo(".card-body5");
+                    $('<img src="http://openweathermap.org/img/wn/03d@2x.png" width="300%">').appendTo(".card-body6");
 
 
 
