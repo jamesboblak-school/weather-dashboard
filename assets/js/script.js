@@ -91,7 +91,7 @@ function getCity() {
                         var td11 = "<td id='temp-forecast-report1'>" + tempF2 + tem + "</td>";
                         var td12 = "<td id='perc-forecast-report1'>" + response2["daily"]["1"]["humidity"] + perc + "</td></tr>";
                         var td19 = "<td id='weather-forc-report1'>" + response2["daily"]["1"]["weather"][0]["description"] + "</td>";
-                        var td29 = "<td id='weather-forc-report1'>" + response2["daily"]["1"]["weather"][0]["info"] + "</td>";
+                        var td29 = "<td id='weather-forc-report1'>" + response2["daily"]["1"]["weather"][0]["icon"] + "</td>";
 
                         // card 3
                         var tempF3 = Math.floor((((response2["daily"]["2"]["temp"]["day"] - 273) * 1.8) + 32));
@@ -134,7 +134,7 @@ function getCity() {
                             alert("UVI is healthy in that location today: " + response2["daily"][0]["uvi"])
                         };
                     }
-
+                    //  append the fetched data to the table
                     $("#card1").append(td10 + td9);
                     $("#card2").append(tr + td19 + td11 + td12);
                     $("#card3").append(tr + td20 + td13 + td14);
@@ -142,22 +142,26 @@ function getCity() {
                     $("#card5").append(tr + td22 + td17 + td18);
                     $("#card6").append(tr + td23 + td27 + td28);
 
+                    //  append images to the cards
+                    var imageUrlStart = "http://openweathermap.org/img/wn/"
+                    var imageUrl2 = imageUrlStart + (response2["daily"]["0"]["weather"][0]["icon"]) + "@2x.png";
+                    var imageUrl2 = imageUrlStart + (response2["daily"]["1"]["weather"][0]["icon"]) + "@2x.png";
+                    var imageUrl3 = imageUrlStart + (response2["daily"]["2"]["weather"][0]["icon"]) + "@2x.png";
+                    var imageUrl4 = imageUrlStart + (response2["daily"]["3"]["weather"][0]["icon"]) + "@2x.png";
+                    var imageUrl5 = imageUrlStart + (response2["daily"]["4"]["weather"][0]["icon"]) + "@2x.png";
+                    var imageUrl6 = imageUrlStart + (response2["daily"]["5"]["weather"][0]["icon"]) + "@2x.png";
 
-                    var imgSource = "./assets/images/cloudy.png"
-                    $('<img src="http://openweathermap.org/img/wn/01d@2x.png" width="300%">').appendTo(".card-body2");
-                    $('<img src="http://openweathermap.org/img/wn/10d@2x.png" width="300%">').appendTo(".card-body3");
-                    $('<img src="http://openweathermap.org/img/wn/11d@2x.png" width="300%">').appendTo(".card-body4");
-                    $('<img src="http://openweathermap.org/img/wn/02d@2x.png" width="300%">').appendTo(".card-body5");
-                    $('<img src="http://openweathermap.org/img/wn/03d@2x.png" width="300%">').appendTo(".card-body6");
-
-
-
+                    $('<img src="" width="300%" id="cardImage2">').appendTo(".card-body2");
+                    $('#cardImage2').attr('src',imageUrl2);
+                    $('<img src="" width="300%" id="cardImage3">').appendTo(".card-body3");
+                    $('#cardImage3').attr('src',imageUrl3);
+                    $('<img src="" width="300%" id="cardImage4">').appendTo(".card-body4");
+                    $('#cardImage4').attr('src',imageUrl4);
+                    $('<img src="" width="300%" id="cardImage5">').appendTo(".card-body5");
+                    $('#cardImage5').attr('src',imageUrl5);
+                    $('<img src="" width="300%" id="cardImage6">').appendTo(".card-body6");
+                    $('#cardImage6').attr('src',imageUrl6);
 
                 })
         });
-
-    // var message = document.createElement("P"); // Create a <p> element
-    // message.innerHTML = "Today in " + cityName; // Insert text
-    // document.getElementById("card1").appendChild(message); // Append <p> to <div> with id="card1"
-
 };
