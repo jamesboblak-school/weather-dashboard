@@ -49,12 +49,7 @@ function getCity() {
                 var td34 = "<td id='weather-report'>" + response["weather"][0]["icon"] + "</td>";
                 var td3 = "<td id='humidity-report'>" + response["main"]["humidity"] + perc + "</td>";
                 $("#card1").append(tr + td0 + td1 + td2 + td3);
-                $('<img src="http://openweathermap.org/img/wn/04d@2x.png" width="300%">').appendTo(".card-body1");
-
-                var imgLinkStart = "http://openweathermap.org/img/wn/";
-                var imgLinkEnd = "@2x.png";
-                var imgLink0 = imgLinkStart + (response["weather"][0]["icon"]) + imgLinkEnd;
-                console.log("imgLink0: " + imgLink0);
+                // $('<img src="http://openweathermap.org/img/wn/04d@2x.png" width="300%">').appendTo(".card-body1");
             }
             var lat = Math.floor(response["coord"]["lat"]);
             console.log("lat: " + lat);
@@ -140,23 +135,25 @@ function getCity() {
 
                     //  append images to the cards
                     var imageUrlStart = "http://openweathermap.org/img/wn/"
-                    var imageUrl2 = imageUrlStart + (response2["daily"]["0"]["weather"][0]["icon"]) + "@2x.png";
-                    var imageUrl2 = imageUrlStart + (response2["daily"]["1"]["weather"][0]["icon"]) + "@2x.png";
-                    var imageUrl3 = imageUrlStart + (response2["daily"]["2"]["weather"][0]["icon"]) + "@2x.png";
-                    var imageUrl4 = imageUrlStart + (response2["daily"]["3"]["weather"][0]["icon"]) + "@2x.png";
-                    var imageUrl5 = imageUrlStart + (response2["daily"]["4"]["weather"][0]["icon"]) + "@2x.png";
-                    var imageUrl6 = imageUrlStart + (response2["daily"]["5"]["weather"][0]["icon"]) + "@2x.png";
+                    var imageUrl1 = imageUrlStart + (response2["daily"]["0"]["weather"][0]["icon"]) + "@4x.png";
+                    var imageUrl2 = imageUrlStart + (response2["daily"]["1"]["weather"][0]["icon"]) + "@4x.png";
+                    var imageUrl3 = imageUrlStart + (response2["daily"]["2"]["weather"][0]["icon"]) + "@4x.png";
+                    var imageUrl4 = imageUrlStart + (response2["daily"]["3"]["weather"][0]["icon"]) + "@4x.png";
+                    var imageUrl5 = imageUrlStart + (response2["daily"]["4"]["weather"][0]["icon"]) + "@4x.png";
+                    var imageUrl6 = imageUrlStart + (response2["daily"]["5"]["weather"][0]["icon"]) + "@4x.png";
 
-                    $('<img src="" width="300%" id="cardImage2">').appendTo(".card-body2");
-                    $('#cardImage2').attr('src',imageUrl2);
-                    $('<img src="" width="300%" id="cardImage3">').appendTo(".card-body3");
-                    $('#cardImage3').attr('src',imageUrl3);
-                    $('<img src="" width="300%" id="cardImage4">').appendTo(".card-body4");
-                    $('#cardImage4').attr('src',imageUrl4);
-                    $('<img src="" width="300%" id="cardImage5">').appendTo(".card-body5");
-                    $('#cardImage5').attr('src',imageUrl5);
-                    $('<img src="" width="300%" id="cardImage6">').appendTo(".card-body6");
-                    $('#cardImage6').attr('src',imageUrl6);
+                    $('<img src="" width="100%" id="cardImage1">').appendTo(".card-body1");
+                    $('#cardImage1').attr('src', imageUrl1);
+                    $('<img src="" width="100%" id="cardImage2">').appendTo(".card-body2");
+                    $('#cardImage2').attr('src', imageUrl2);
+                    $('<img src="" width="100%" id="cardImage3">').appendTo(".card-body3");
+                    $('#cardImage3').attr('src', imageUrl3);
+                    $('<img src="" width="100%" id="cardImage4">').appendTo(".card-body4");
+                    $('#cardImage4').attr('src', imageUrl4);
+                    $('<img src="" width="100%" id="cardImage5">').appendTo(".card-body5");
+                    $('#cardImage5').attr('src', imageUrl5);
+                    $('<img src="" width="100%" id="cardImage6">').appendTo(".card-body6");
+                    $('#cardImage6').attr('src', imageUrl6);
 
                 })
         });

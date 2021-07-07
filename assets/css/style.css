@@ -1,32 +1,46 @@
+/* ELEMENT STYLES */
+
 body {
-    
+
     background-color: blue;
+    margin: 10px;
 }
 
 div {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-}
-
-.custom-main {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-
-    /* align-items: flex-end; */
+    max-width: 100%;
+    min-width: 50%;
+    text-shadow: blue;
 }
 
 td {
     display: flex;
     margin: 10px 10px 10px 10px;
-    
+
 }
 
+h1 {
+    margin: 20px;
+}
+
+/* CLASS STYLES */
+
+.custom-main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 10px;
+
+}
+    
 .card {
     background-color: lightgrey;
     margin: 10px 10px 10px 10px;
     border-radius: 10px;
+    max-width: 15%;
+    min-width: 15%;
     
 
 }
@@ -44,8 +58,9 @@ td {
     background-color: red;
 }
 
-
+/* ID STYLES */
 #display-box {
-display: flex;
-flex-direction: row;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
