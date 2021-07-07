@@ -23,9 +23,8 @@ UV Index above 8.0 turns today's background red.
 <!-- JavaScript Pionts -->
 * JavaScript
     * Functions
-    * Momenet.js time services
+    * Moment.js time services
     * Fetch rest.API calls
-    * Moment clock timer
 
 <!-- JQuery Pionts -->
 * JQuery
