@@ -4,6 +4,7 @@ body {
 
     background-color: blue;
     margin: 10px;
+
 }
 
 div {
@@ -18,7 +19,6 @@ div {
 td {
     display: flex;
     margin: 10px 10px 10px 10px;
-
 }
 
 h1 {
@@ -32,17 +32,14 @@ h1 {
     flex-direction: row;
     flex-wrap: wrap;
     margin: 10px;
-
 }
-    
+
 .card {
     background-color: lightgrey;
     margin: 10px 10px 10px 10px;
     border-radius: 10px;
     max-width: 15%;
     min-width: 15%;
-    
-
 }
 
 .safeUV {
@@ -59,8 +56,10 @@ h1 {
 }
 
 /* ID STYLES */
+
 #display-box {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
