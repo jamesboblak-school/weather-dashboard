@@ -1,5 +1,4 @@
-// Store user text input to local storage and print to history-list
-
+// get the date for today and the next five days
 var updateTime = function () {
     var msecDay = 86400000
     var currentTime = moment().format("MMM Do, YYYY", "mm:dd:yyyy");
@@ -18,6 +17,7 @@ var updateTime = function () {
 updateTime();
 setInterval(updateTime, 1000);
 
+// get the weather data from the rest.API
 function getCity() {
     var cityName =
         document.getElementById("city-name").value;
@@ -51,14 +51,10 @@ function getCity() {
                 $("#card1").append(tr + td0 + td1 + td2 + td3);
                 $('<img src="http://openweathermap.org/img/wn/04d@2x.png" width="300%">').appendTo(".card-body1");
 
-//***********************************************************/
-
                 var imgLinkStart = "http://openweathermap.org/img/wn/";
                 var imgLinkEnd = "@2x.png";
                 var imgLink0 = imgLinkStart + (response["weather"][0]["icon"]) + imgLinkEnd;
                 console.log("imgLink0: " + imgLink0);
-                // $('image0')
-                // var td50 = "<td id='card-0-image'>" + imgLink0 + "</td>";
             }
             var lat = Math.floor(response["coord"]["lat"]);
             console.log("lat: " + lat);

@@ -1,6 +1,6 @@
 body {
     
-    background-color: lightgrey;
+    background-color: blue;
 }
 
 div {
@@ -24,7 +24,7 @@ td {
 }
 
 .card {
-    background-color: white;
+    background-color: lightgrey;
     margin: 10px 10px 10px 10px;
     border-radius: 10px;
     
